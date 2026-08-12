@@ -72,6 +72,15 @@ class HomeContent extends StatelessWidget {
     );
   }
 
+  void _openProfile(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => const ProfileScreen(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -101,27 +110,58 @@ class HomeContent extends StatelessWidget {
             ),
           ],
         ),
+
+        // =========================================================
+        // PROFIL + PRÉNOM
+        // =========================================================
+
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 16),
-            child: Container(
-              decoration: BoxDecoration(
-                color: const Color(0xFF7A263A),
-                borderRadius: BorderRadius.circular(14),
-              ),
-              child: IconButton(
-                onPressed: () {
-                  _openProducts(context);
-                },
-                icon: const Icon(
-                  Icons.search,
-                  color: Colors.white,
+            child: InkWell(
+              onTap: () => _openProfile(context),
+              borderRadius: BorderRadius.circular(30),
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 6,
+                ),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFF5E8EB),
+                  borderRadius: BorderRadius.circular(30),
+                  border: Border.all(
+                    color: const Color(0xFFEADCE0),
+                  ),
+                ),
+                child: const Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    CircleAvatar(
+                      radius: 16,
+                      backgroundColor: Color(0xFF7A263A),
+                      child: Icon(
+                        Icons.person,
+                        color: Colors.white,
+                        size: 18,
+                      ),
+                    ),
+                    SizedBox(width: 8),
+                    Text(
+                      'Fatou',
+                      style: TextStyle(
+                        color: Color(0xFF5E1F30),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
           ),
         ],
       ),
+
       body: SingleChildScrollView(
         padding: const EdgeInsets.fromLTRB(16, 8, 16, 30),
         child: Column(
@@ -146,7 +186,9 @@ class HomeContent extends StatelessWidget {
                 borderRadius: BorderRadius.circular(28),
                 boxShadow: [
                   BoxShadow(
-                    color: const Color(0xFF7A263A).withValues(alpha: 0.22),
+                    color: const Color(0xFF7A263A).withValues(
+                      alpha: 0.22,
+                    ),
                     blurRadius: 18,
                     offset: const Offset(0, 8),
                   ),
@@ -162,7 +204,9 @@ class HomeContent extends StatelessWidget {
                       height: 110,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Colors.white.withValues(alpha: 0.08),
+                        color: Colors.white.withValues(
+                          alpha: 0.08,
+                        ),
                       ),
                     ),
                   ),
@@ -175,7 +219,9 @@ class HomeContent extends StatelessWidget {
                           vertical: 6,
                         ),
                         decoration: BoxDecoration(
-                          color: Colors.white.withValues(alpha: 0.15),
+                          color: Colors.white.withValues(
+                            alpha: 0.15,
+                          ),
                           borderRadius: BorderRadius.circular(30),
                         ),
                         child: const Text(
@@ -296,13 +342,11 @@ class HomeContent extends StatelessWidget {
             // =========================================================
 
             Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Expanded(
-                  child: _SectionTitle(
-                    title: 'Produits populaires 🔥',
-                    subtitle: 'Nos coups de cœur',
-                  ),
+                const _SectionTitle(
+                  title: 'Produits populaires 🔥',
+                  subtitle: 'Nos coups de cœur',
                 ),
                 TextButton(
                   onPressed: () => _openProducts(context),
@@ -359,7 +403,7 @@ class HomeContent extends StatelessWidget {
             const SizedBox(height: 28),
 
             // =========================================================
-            // PETIT ARGUMENT DE VENTE
+            // ARGUMENT DE VENTE
             // =========================================================
 
             Container(
@@ -509,8 +553,6 @@ class _CategoryCard extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 14,
@@ -519,8 +561,6 @@ class _CategoryCard extends StatelessWidget {
                   const SizedBox(height: 3),
                   Text(
                     subtitle,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                       fontSize: 11,
                       color: Colors.grey,
@@ -582,7 +622,6 @@ class _PopularProductCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // IMAGE
           ClipRRect(
             borderRadius: const BorderRadius.vertical(
               top: Radius.circular(22),
@@ -606,26 +645,19 @@ class _PopularProductCard extends StatelessWidget {
               },
             ),
           ),
-
           Padding(
             padding: const EdgeInsets.fromLTRB(12, 10, 12, 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // CATÉGORIE
                 Text(
                   category,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
                     fontSize: 11,
                     color: Colors.grey,
                   ),
                 ),
-
                 const SizedBox(height: 3),
-
-                // NOM
                 Text(
                   name,
                   maxLines: 1,
@@ -636,16 +668,12 @@ class _PopularProductCard extends StatelessWidget {
                     color: Color(0xFF3D2029),
                   ),
                 ),
-
                 const SizedBox(height: 7),
-
-                // PRIX + NOTE
                 Row(
                   children: [
                     Expanded(
                       child: Text(
                         price,
-                        maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
                           fontSize: 12,
@@ -654,24 +682,19 @@ class _PopularProductCard extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(width: 6),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Icon(
-                          Icons.star,
-                          size: 14,
-                          color: Colors.amber,
-                        ),
-                        const SizedBox(width: 2),
-                        Text(
-                          rating,
-                          style: const TextStyle(
-                            fontSize: 11,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ],
+                    const SizedBox(width: 5),
+                    const Icon(
+                      Icons.star,
+                      size: 14,
+                      color: Colors.amber,
+                    ),
+                    const SizedBox(width: 2),
+                    Text(
+                      rating,
+                      style: const TextStyle(
+                        fontSize: 11,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ],
                 ),
