@@ -299,24 +299,23 @@ void main() {
   // ==========================================
 
   test(
-    'le total prend en compte la quantité',
-    () async {
-      final notifier = await createNotifier();
+  'le total prend en compte la quantité',
+  () async {
+    final notifier = await createNotifier();
 
-      await notifier.addProduct(product1);
-      await notifier.increaseQuantity(product1.id);
+    await notifier.addProduct(product1);
+    await notifier.increaseQuantity(product1.id);
 
-      final total = notifier.state.fold<double>(
-        0,
-        (sum, item) => sum + item.total,
-      );
+    final total = notifier.state.fold<double>(
+      0,
+      (sum, item) => sum + item.total,
+    );
 
-      expect(total, 30000);
+    expect(total, 30000);
 
-      notifier.dispose();
-    },
-  );
-
+    notifier.dispose();
+  },
+);
   // ==========================================
   // 14. NOMBRE TOTAL D’ARTICLES
   // ==========================================

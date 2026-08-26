@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'features/home/home_screen.dart';
+import 'package:deegi_shop/l10n/app_localizations.dart';
+
 
 void main() {
   runApp(
@@ -34,6 +37,28 @@ class DeegiShopApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'DeegiShop',
+
+      // =========================================================
+      // INTERNATIONALISATION
+      // =========================================================
+
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+
+      supportedLocales: const [
+        Locale('fr'),
+        Locale('en'),
+      ],
+
+      locale: const Locale('fr'),
+
+      // =========================================================
+      // THÈME
+      // =========================================================
 
       theme: ThemeData(
         useMaterial3: true,
