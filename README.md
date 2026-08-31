@@ -229,7 +229,7 @@ docs/screenshots/profile.jpeg
 Lorsque les captures seront ajoutées au dépôt, elles pourront être affichées directement avec :
 
 ```markdown
-![Accueil](docs/screenshots/home.png)
+![Accueil](docs/screenshots/home.jpg)
 ```
 
 ---
