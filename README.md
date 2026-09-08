@@ -198,33 +198,32 @@ Le statut du workflow est affiché par le badge CI présent en haut de ce README
 
 Ajoute ici une capture de l'écran d'accueil :
 
-```text
-docs/screenshots/home.jpg
-```
+
+(docs/screenshots/home.jpg)
+
 
 ### 🛍️ Produits
 
-```text
+
 docs/screenshots/products.jpg
-```
+
 
 ### ❤️ Favoris
 
-```text
 docs/screenshots/favorites.jpg
-```
+
 
 ### 🛒 Panier
 
-```text
+
 docs/screenshots/cart.jpg
-```
+
 
 ### 👤 Profil
 
-```text
+
 docs/screenshots/profile.jpeg
-```
+
 
 Lorsque les captures seront ajoutées au dépôt, elles pourront être affichées directement avec :
 
