@@ -212,7 +212,6 @@ docs/screenshots/products.jpg
 
 docs/screenshots/favorites.jpg
 
-
 ### 🛒 Panier
 
 
@@ -227,11 +226,7 @@ docs/screenshots/profile.jpeg
 
 Lorsque les captures seront ajoutées au dépôt, elles pourront être affichées directement avec :
 
-```markdown
 ![Accueil](docs/screenshots/home.jpg)
-```
-
----
 
 ## 📁 Structure du projet
 
